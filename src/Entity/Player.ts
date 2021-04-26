@@ -41,14 +41,14 @@ export class Player {
             if (this.jumping) {
                 if (!this.descending) {
                     this.descending = true
-                    this.sprite.setVelocityY(600)
+                    this.sprite.setVelocityY(1000)
                 }
             }
             else {
                 this.sprite.play("jumping")
                 this.jumping = true
                 this.allowGroundCheck = true
-                this.sprite.setVelocityY(-200)
+                this.sprite.setVelocityY(-500)
             }
         }
         this.inputStatus = false

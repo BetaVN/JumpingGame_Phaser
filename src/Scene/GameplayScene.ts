@@ -25,11 +25,7 @@ export class GameplayScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.spritesheet("playerSprite", "assets/images/playerSprite.png", { frameWidth: 48, frameHeight: 48 })
-        this.load.spritesheet("rockSprite", "assets/images/rockSprite.png", { frameWidth: 48, frameHeight: 48 })
-        this.load.spritesheet("flameSprite", "assets/images/flameSprite.png", { frameWidth: 48, frameHeight: 48 })
-        this.load.image("backgroundImage", "assets/images/background.png")
-        this.load.image("platform", "assets/images/platform.png")
+
     }
 
     create() {

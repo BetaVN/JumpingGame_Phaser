@@ -23,7 +23,7 @@ export class Obstacle{
             this.sprite.scaleX = param.size / this.sprite.width
             this.sprite.scaleY = param.size / this.sprite.height
             this.sprite.play("flyingObstacle")
-            this.sprite.setGravity(0, -100)
+            this.sprite.setGravity(0, -600)
             this.sprite.setVelocityX(-180)
         }
         this.currentScene.physics.add.collider(this.sprite, this.currentScene.getPlayer().getPlayerSprite(), this.currentScene.getGameoverCallback())
