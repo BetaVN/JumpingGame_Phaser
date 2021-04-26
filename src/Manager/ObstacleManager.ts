@@ -27,7 +27,7 @@ export class ObstacleManager {
             let param = { scene: this.currentScene, isFlying: isFlying, size: size }
             var newObstacle = new Obstacle(param)
             this.obstacleList.push(newObstacle)
-            this.currentObstacleCooldown = 0
+            this.currentObstacleCooldown = Utils.getRndNumber(0, Math.floor(Constants.ObstacleConstants.MaxFramePerObstacle * 0.3))
         }
     }
 
