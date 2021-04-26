@@ -1,4 +1,5 @@
 import { GameplayScene } from "./Scene/GameplayScene";
+import { GameoverScene } from "./Scene/GameoverScene";
 
 export const GameConfig: Phaser.Types.Core.GameConfig = {
     title: 'Jumping Game',
@@ -7,7 +8,7 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
     height: 600,
     type: Phaser.AUTO,
     parent: 'game',
-    scene: [ GameplayScene ],
+    scene: [ GameplayScene, GameoverScene ],
     input: {
       keyboard: true,
       mouse: true,
@@ -17,6 +18,9 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
     physics: {
       default: 'arcade',
       arcade: {
+        gravity: {
+          y: 100
+        },
         debug: false
       }
     },

@@ -1,13 +1,14 @@
 import { Utils } from "../Utils/Utils"
 import { Constants } from "../Constants/Constants"
 import { Obstacle } from "../Entity/Obstacle"
+import { GameplayScene } from "../Scene/GameplayScene"
 
 export class ObstacleManager {
     private obstacleList: Obstacle[]
     private currentObstacleCooldown: number
-    private currentScene: Phaser.Scene
+    private currentScene: GameplayScene
     
-    constructor(currentScene: Phaser.Scene) {
+    constructor(currentScene: GameplayScene) {
         this.currentObstacleCooldown = 0
         this.obstacleList = []
         this.currentScene = currentScene
@@ -22,10 +23,29 @@ export class ObstacleManager {
         this.currentObstacleCooldown++
         if (this.currentObstacleCooldown == Constants.ObstacleConstants.MaxFramePerObstacle) {
             var isFlying = Utils.getRndNumber(0, 100) > 50 ? true : false 
-            var size = isFlying ? 50 : Utils.getRndNumber(40, 70)
-            //let param = { scene: this.currentScene, x: Constants.ObstacleConstants.BasePosX, y: Constants.ObstacleConstants.BasePosY - size, texture: null, isFlying: isFlying }
-            //var newObstacle = new Obstacle(param)
-            //this.obstacleList.push(newObstacle)
+            var size = isFlying ? 70 : Utils.getRndNumber(40, 70)
+            let param = { scene: this.currentScene, isFlying: isFlying, size: size }
+            var newObstacle = new Obstacle(param)
+            this.obstacleList.push(newObstacle)
+            this.currentObstacleCooldown = 0
         }
+    }
+
+    public removeInvalidObstacle() {
+        if (this.obstacleList.length == 0) {
+            return
+        }
+        this.obstacleList.forEach((obstacle) => {
+            if (obstacle.isVisible() < -50) {
+                obstacle.destroy()
+                let index = this.obstacleList.indexOf(obstacle)
+                this.obstacleList.splice(index, 1)
+            }
+        })
+    }
+
+    public update() {
+        this.obstacleGeneration()
+        this.removeInvalidObstacle()
     }
 }

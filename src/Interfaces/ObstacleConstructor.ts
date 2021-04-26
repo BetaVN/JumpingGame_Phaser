@@ -1,5 +1,7 @@
+import { GameplayScene } from "../Scene/GameplayScene";
+
 export interface ObstacleConstructor {
-    scene: Phaser.Scene,
-    sprite: Phaser.GameObjects.Sprite,
-    isFlying: boolean
+    scene: GameplayScene,
+    isFlying: boolean,
+    size: number
 }

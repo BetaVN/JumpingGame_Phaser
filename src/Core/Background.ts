@@ -6,6 +6,6 @@ export class Background {
     }
 
     update() {
-        this.currentBackground.tilePositionX += 4
+        this.currentBackground.tilePositionX += 3
     }
 }

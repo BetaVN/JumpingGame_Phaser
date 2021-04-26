@@ -26,6 +26,6 @@ export class ScoreManager {
     }
 
     public getScore() {
-        return this.score
+        return (100000 + this.score).toString().substring(1)
     }
 }

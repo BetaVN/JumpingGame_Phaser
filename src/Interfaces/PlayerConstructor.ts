@@ -1,4 +1,6 @@
+import { GameplayScene } from "../Scene/GameplayScene";
+
 export interface PlayerConstructor {
-    sprite: Phaser.GameObjects.Sprite,
-    scene: Phaser.Scene
+    sprite: Phaser.Physics.Arcade.Sprite,
+    scene: GameplayScene
   }

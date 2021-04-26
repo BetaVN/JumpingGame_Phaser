@@ -9,8 +9,9 @@ export const Constants = {
         DescendGravity: 3.33
     },
     ObstacleConstants: {
+        BaseSize: 48,
         BasePosX: 800,
-        BasePosY: 515,
+        BasePosY: 585,
         MaxFramePerObstacle: 90
     },
     GameConstants: {
