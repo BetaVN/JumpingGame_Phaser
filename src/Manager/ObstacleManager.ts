@@ -27,7 +27,7 @@ export class ObstacleManager {
             let param = { scene: this.currentScene, isFlying: isFlying, size: size }
             var newObstacle = new Obstacle(param)
             this.obstacleList.push(newObstacle)
-            this.currentObstacleCooldown = Utils.getRndNumber(0, Math.floor(Constants.ObstacleConstants.MaxFramePerObstacle * 0.3))
+            this.currentObstacleCooldown = Utils.getRndNumber(0, Math.floor(Constants.ObstacleConstants.MaxFramePerObstacle * 0.2))
         }
     }
 
@@ -36,7 +36,7 @@ export class ObstacleManager {
             return
         }
         this.obstacleList.forEach((obstacle) => {
-            if (obstacle.isVisible() < -50) {
+            if (obstacle.isVisible() < -100) {
                 obstacle.destroy()
                 let index = this.obstacleList.indexOf(obstacle)
                 this.obstacleList.splice(index, 1)
