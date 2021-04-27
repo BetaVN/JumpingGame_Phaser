@@ -87,6 +87,7 @@ export class GameplayScene extends Phaser.Scene {
     }
 
     private switchToGameover() {
+        this.sound.play("gameoverSound")
         this.scene.start("Gameover", { score: this.scoreManager.getScore()})
     }
 

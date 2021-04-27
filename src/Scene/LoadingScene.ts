@@ -25,8 +25,9 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image("backgroundImage", "assets/images/background.png")
         this.load.audio("jumpSound", "assets/sounds/jump.mp3")
         this.load.audio("landingSound", "assets/sounds/land.mp3")
+        this.load.audio("gameoverSound", "assets/sounds/gameover.wav")
         this.load.image("platform", "assets/images/platform.png")
-        for (let i = 0; i < 998; i++) {
+        for (let i = 0; i < 997; i++) {
             this.load.image("placeholder " + i.toString(), "assets/images/platform.png")
         }
 
