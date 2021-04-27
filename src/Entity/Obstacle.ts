@@ -33,6 +33,10 @@ export class Obstacle{
         return this.sprite.x
     }
 
+    public getNewObstacle(isFlying: boolean, size: number) {
+        
+    }
+
     public destroy() {
         this.sprite.destroy()
     }
