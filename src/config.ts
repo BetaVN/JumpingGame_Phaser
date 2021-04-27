@@ -1,6 +1,7 @@
 import { GameplayScene } from "./Scene/GameplayScene";
 import { GameoverScene } from "./Scene/GameoverScene";
 import { LoadingScene } from "./Scene/LoadingScene";
+import { BootScene } from "./Scene/BootScene";
 
 export const GameConfig: Phaser.Types.Core.GameConfig = {
     title: 'Jumping Game',
@@ -9,7 +10,7 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
     height: 600,
     type: Phaser.AUTO,
     parent: 'game',
-    scene: [ LoadingScene, GameplayScene, GameoverScene ],
+    scene: [ BootScene, LoadingScene, GameplayScene, GameoverScene ],
     input: {
       keyboard: true,
       mouse: true,

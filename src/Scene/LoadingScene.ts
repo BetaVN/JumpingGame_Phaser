@@ -1,6 +1,7 @@
 export class LoadingScene extends Phaser.Scene {
-    private loadingBar: Phaser.GameObjects.Graphics
-    private filler: Phaser.GameObjects.Graphics
+    private loadingBarOutline: Phaser.GameObjects.Image
+    private loadingBarFill: Phaser.GameObjects.Image
+    private loadingText: Phaser.GameObjects.Text
     private loadingProgress: number
     constructor() {
         super({
@@ -15,12 +16,9 @@ export class LoadingScene extends Phaser.Scene {
 
     preload() {
         this.add.rectangle(400, 300, 800, 600, 0xfcba03)
-        this.loadingBar = this.add.graphics()
-        this.filler = this.add.graphics()
-        this.loadingBar.fillStyle(0x919191)
-        this.loadingBar.fillRect(150, 350, 500, 100)
-        this.filler.fillStyle(0x0004ff)
-        this.filler.fillRect(155, 355, 2, 90)
+        this.loadingBarOutline = this.add.image(400, 400, "loadingBarOutline")
+        this.loadingBarFill = this.add.image(400, 400, "loadingBarFill").setCrop(0, 0, 2, 86)
+        this.loadingText = this.add.text(370, 375, "0 %", { font: "30px Arial", fontStyle: 'bold', color: "#FFFFFF"})
         this.load.spritesheet("playerSprite", "assets/images/playerSprite.png", { frameWidth: 48, frameHeight: 48 })
         this.load.spritesheet("rockSprite", "assets/images/rockSprite.png", { frameWidth: 48, frameHeight: 48 })
         this.load.spritesheet("flameSprite", "assets/images/flameSprite.png", { frameWidth: 48, frameHeight: 48 })
@@ -44,9 +42,8 @@ export class LoadingScene extends Phaser.Scene {
 
     private updateLoadingBar() {
         this.loadingProgress++
-        this.filler.clear()
-        this.filler.fillStyle(0x0004ff)
-        this.filler.fillRect(155, 355, (this.loadingProgress / 1006) * 490 , 90)
+        this.loadingBarFill.setCrop(0, 0, (this.loadingProgress / 1006) * 486, 86)
+        this.loadingText.setText(Math.floor(this.loadingProgress / 1006 * 100).toString() + " %")
     }
 
     private onCompleteLoading() {
