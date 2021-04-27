@@ -23,8 +23,10 @@ export class LoadingScene extends Phaser.Scene {
         this.load.spritesheet("rockSprite", "assets/images/rockSprite.png", { frameWidth: 48, frameHeight: 48 })
         this.load.spritesheet("flameSprite", "assets/images/flameSprite.png", { frameWidth: 48, frameHeight: 48 })
         this.load.image("backgroundImage", "assets/images/background.png")
+        this.load.audio("jumpSound", "assets/sounds/jump.mp3")
+        this.load.audio("landingSound", "assets/sounds/land.mp3")
         this.load.image("platform", "assets/images/platform.png")
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 998; i++) {
             this.load.image("placeholder " + i.toString(), "assets/images/platform.png")
         }
 

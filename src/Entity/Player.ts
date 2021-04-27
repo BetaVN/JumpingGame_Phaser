@@ -49,6 +49,7 @@ export class Player {
                 this.jumping = true
                 this.allowGroundCheck = true
                 this.sprite.setVelocityY(-500)
+                this.currentScene.sound.play("jumpSound")
             }
         }
         this.inputStatus = false
@@ -60,6 +61,7 @@ export class Player {
             this.jumping = false
             this.descending = false
             this.allowGroundCheck = false
+            this.currentScene.sound.play("landingSound")
         }
     }
 
