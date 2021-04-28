@@ -9,6 +9,7 @@ export class Player {
     private inputStatus: boolean
     private allowGroundCheck: boolean
     private currentScene: GameplayScene
+    public jumpCallback: any
 
     constructor(param: PlayerConstructor) {
         this.sprite = param.sprite
@@ -17,12 +18,12 @@ export class Player {
         this.sprite.scaleY =Constants.PlayerConstants.Height / this.sprite.height
         this.sprite.setBounce(0)
         this.sprite.setCollideWorldBounds(true)
-        this.currentScene.physics.add.collider(this.sprite, this.currentScene.getPlatform(), this.jumpingCheck.bind(this))
         this.sprite.play("walking")
         this.jumping = false;
         this.descending = false;
         this.inputStatus = false; 
         this.allowGroundCheck = false;
+        this.jumpCallback = this.jumpingCheck.bind(this)
     }
 
     public reset() {
@@ -67,5 +68,9 @@ export class Player {
 
     public getPlayerSprite() {
         return this.sprite
+    }
+
+    public getJumpCallback() {
+        return this.jumpCallback
     }
 }

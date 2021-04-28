@@ -1,5 +1,5 @@
 import { Constants } from "../Constants/Constants"
-import { Background } from "../Core/Background"
+import { Background } from "../Entity/Background"
 import { Player } from "../Entity/Player"
 import { ObstacleManager } from "../Manager/ObstacleManager"
 import { ScoreManager } from "../Manager/ScoreManager"
@@ -29,7 +29,7 @@ export class GameplayScene extends Phaser.Scene {
     }
 
     create() {
-        this.platform = this.physics.add.staticGroup();
+        this.platform = this.physics.add.staticGroup()
         this.platform.create(400, 592, "platform")
 
         this.anims.create({
@@ -61,6 +61,7 @@ export class GameplayScene extends Phaser.Scene {
 
         this.obstacleManager = new ObstacleManager(this)
         this.scoreManager = new ScoreManager(this.add.text(700, 30, '00000', { fontSize: '20px Arial', color: "#000000", fontStyle: 'bold' }))
+        this.enablePhysics()
         this.input.on("pointerdown", this.processInput.bind(this))
         
     }
@@ -72,6 +73,12 @@ export class GameplayScene extends Phaser.Scene {
         this.player.update()
         this.scoreManager.update()
         this.inputStatus = false
+    }
+
+    public enablePhysics() {
+        this.physics.add.collider(this.player.getPlayerSprite(), this.platform, this.player.getJumpCallback())
+        this.physics.add.collider(this.obstacleManager.getObstacleList(), this.platform)
+        this.physics.add.collider(this.player.getPlayerSprite(), this.obstacleManager.getObstacleList(), this.getGameoverCallback())
     }
 
     public getPlatform() {

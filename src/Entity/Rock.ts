@@ -3,7 +3,10 @@ import { Obstacle } from "./Obstacle"
 
 export class Rock extends Obstacle {
     constructor(param: ObstacleConstructor) {
-        super(param)
-        
+        super(param)      
+    }
+
+    public init() {
+        this.body.velocity.x = -180
     }
 }
